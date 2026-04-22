@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Collection | Luxère</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        /* MAKEUP PAGE SPECIFIC STYLES */
+        
+        /* HERO SECTION */
+        .makeup-hero {
+            background: linear-gradient(135deg, #4A2820 0%, #6B3828 50%, #8B4A40 100%);
+            padding: 100px 5%;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .makeup-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .makeup-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .makeup-hero-badge {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .makeup-hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(42px, 5vw, 64px);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .makeup-hero-title em {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .makeup-hero-subtitle {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .makeup-hero-btn {
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            padding: 15px 40px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .makeup-hero-btn:hover {
+            background: #B8933A;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 169, 110, 0.3);
+        }
+
+        /* CATEGORY FILTER */
+        .category-section {
+            padding: 40px 5%;
+            background: var(--white);
+            border-bottom: 1px solid #EDE8E3;
+            position: sticky;
+            top: 72px;
+            z-index: 90;
+        }
+
+        .category-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            padding-bottom: 8px;
+        }
+
+        .category-wrapper::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        .category-wrapper::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .category-wrapper::-webkit-scrollbar-thumb {
+            background: var(--rose);
+            border-radius: 3px;
+        }
+
+        .category-btn {
+            background: var(--white);
+            border: 1px solid #EDE8E3;
+            color: var(--muted);
+            padding: 12px 22px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+            border-radius: 4px;
+        }
+
+        .category-btn:hover {
+            border-color: var(--rose);
+            color: var(--rose);
+        }
+
+        .category-btn.active {
+            background: var(--rose);
+            color: white;
+            border-color: var(--rose);
+        }
+
+        /* SEARCH & FILTER SECTION */
+        .filter-section {
+            padding: 40px 5%;
+            background: var(--cream);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-bar-wrapper {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 13px 18px;
+            border: 1px solid #EDE8E3;
+            background: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            color: var(--charcoal);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--rose);
+            box-shadow: 0 0 0 3px rgba(200, 134, 122, 0.1);
+        }
+
+        .search-bar::placeholder {
+            color: var(--muted);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 13px 16px;
+            border: 1px solid #EDE8E3;
+            background: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            color: var(--charcoal);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 160px;
+        }
+
+        .filter-select:hover {
+            border-color: var(--rose);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--rose);
+            box-shadow: 0 0 0 3px rgba(200, 134, 122, 0.1);
+        }
+
+        /* PRODUCTS SECTION */
+        .makeup-products-section {
+            padding: 40px 5%;
+            background: var(--cream);
+        }
+
+        .makeup-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .makeup-product-card {
+            background: var(--white);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(28, 28, 28, 0.08);
+        }
+
+        .makeup-product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(28, 28, 28, 0.15);
+        }
+
+        .makeup-card-img {
+            background: #F5E0DB;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .makeup-card-img img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .makeup-product-card:hover .makeup-card-img img {
+            transform: scale(1.08);
+        }
+
+        .makeup-card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 11px;
+            font-weight: 500;
+            border-radius: 3px;
+            z-index: 5;
+        }
+
+        .makeup-badge-new {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .makeup-badge-sale {
+            background: var(--rose);
+            color: white;
+        }
+
+        .makeup-card-actions {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(28, 28, 28, 0.92);
+            display: flex;
+            gap: 0;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .makeup-product-card:hover .makeup-card-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .makeup-card-action-btn {
+            flex: 1;
+            padding: 14px 12px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .makeup-card-action-btn:last-child {
+            border-right: none;
+        }
+
+        .makeup-card-action-btn:hover {
+            background: var(--rose);
+        }
+
+        .makeup-card-info {
+            padding: 20px 16px;
+        }
+
+        .makeup-card-brand {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .makeup-card-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .makeup-card-description {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+            min-height: 24px;
+        }
+
+        .makeup-card-price-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .makeup-card-price {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .makeup-card-price-old {
+            font-size: 12px;
+            color: var(--muted);
+            text-decoration: line-through;
+        }
+
+        .makeup-card-discount {
+            font-size: 11px;
+            color: var(--rose);
+            font-weight: 500;
+            margin-left: auto;
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--muted);
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .empty-state-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+
+        .empty-state-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .makeup-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+
+            .makeup-card-img {
+                height: 260px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .makeup-hero {
+                padding: 60px 5%;
+            }
+
+            .makeup-hero-title {
+                font-size: 36px;
+            }
+
+            .makeup-hero-subtitle {
+                font-size: 13px;
+            }
+
+            .category-section {
+                padding: 30px 5%;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+            }
+
+            .search-bar-wrapper {
+                max-width: 100%;
+            }
+
+            .filter-controls {
+                width: 100%;
+            }
+
+            .filter-select {
+                flex: 1;
+                min-width: auto;
+            }
+
+            .makeup-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 16px;
+            }
+
+            .makeup-card-img {
+                height: 220px;
+            }
+
+            .makeup-card-name {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .makeup-hero {
+                padding: 40px 5%;
+            }
+
+            .makeup-hero-title {
+                font-size: 28px;
+            }
+
+            .makeup-hero-subtitle {
+                font-size: 12px;
+                margin-bottom: 24px;
+            }
+
+            .makeup-hero-btn {
+                padding: 12px 32px;
+                font-size: 11px;
+            }
+
+            .category-section {
+                padding: 20px 5%;
+            }
+
+            .category-btn {
+                padding: 10px 16px;
+                font-size: 11px;
+            }
+
+            .filter-section {
+                padding: 20px 5%;
+            }
+
+            .search-bar {
+                padding: 11px 14px;
+                font-size: 12px;
+            }
+
+            .makeup-products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .makeup-card-img {
+                height: 180px;
+            }
+
+            .makeup-card-info {
+                padding: 14px 12px;
+            }
+
+            .makeup-card-name {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            .makeup-card-description {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+
+            .makeup-card-price {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-logo">LU<span>X</span>ÈRE</div>
+        <ul class="nav-links">
+            <li><a href="index.html">New Arrivals</a></li>
+            <li><a href="#">Skincare</a></li>
+            <li><a href="makeup.html">Makeup</a></li>
+            <li><a href="#">Fragrance</a></li>
+            <li><a href="#">Collections</a></li>
+        </ul>
+        <div class="nav-icons">
+            <button class="nav-icon-btn" title="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            <button class="nav-icon-btn" title="Account">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </button>
+            <div style="display:flex;align-items:flex-start;">
+                <button class="nav-icon-btn" title="Cart">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </button>
+                <div class="cart-badge">3</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAKEUP HERO SECTION -->
+    <section class="makeup-hero">
+        <div class="makeup-hero-content">
+            <p class="makeup-hero-badge">✦ Premium Collection</p>
+            <h1 class="makeup-hero-title">Discover Premium<br/><em>Makeup Essentials</em></h1>
+            <p class="makeup-hero-subtitle">Elevate your beauty routine with our curated collection of luxury makeup products. From bold lips to flawless complexion, find everything you need to express your unique style.</p>
+            <button class="makeup-hero-btn">Shop Collection</button>
+        </div>
+    </section>
+
+    <!-- CATEGORY NAVIGATION -->
+    <section class="category-section">
+        <div class="category-wrapper" id="categoryWrapper">
+            <button class="category-btn active" data-category="all">All Products</button>
+            <button class="category-btn" data-category="lipstick">Lipstick</button>
+            <button class="category-btn" data-category="eyeliner">Eyeliner</button>
+            <button class="category-btn" data-category="blush">Blush</button>
+            <button class="category-btn" data-category="foundation">Foundation</button>
+            <button class="category-btn" data-category="mascara">Mascara</button>
+            <button class="category-btn" data-category="compact">Compact Powder</button>
+            <button class="category-btn" data-category="highlighter">Highlighter</button>
+            <button class="category-btn" data-category="concealer">Concealer</button>
+        </div>
+    </section>
+
+    <!-- SEARCH & FILTER SECTION -->
+    <section class="filter-section">
+        <div class="search-bar-wrapper">
+            <input type="text" class="search-bar" id="searchInput" placeholder="Search makeup products...">
+        </div>
+        <div class="filter-controls">
+            <select class="filter-select" id="priceFilter">
+                <option value="">Filter by Price</option>
+                <option value="0-50">Under $50</option>
+                <option value="50-100">$50 - $100</option>
+                <option value="100-150">$100 - $150</option>
+                <option value="150+">$150 & Above</option>
+            </select>
+            <select class="filter-select" id="sortFilter">
+                <option value="">Sort by</option>
+                <option value="popularity">Most Popular</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- PRODUCTS GRID -->
+    <section class="makeup-products-section">
+        <div class="makeup-products-grid" id="productsGrid">
+            <!-- Products will be injected here by JavaScript -->
+        </div>
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-state-icon">✦</div>
+            <h3 class="empty-state-title">No Products Found</h3>
+            <p class="empty-state-text">Try adjusting your filters or search terms to find what you're looking for.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--charcoal); color: var(--white); padding: 60px 5%; margin-top: 60px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 20px; color: var(--gold);">Luxère</h4>
+                <p style="font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.6);">Luxury beauty rituals for the modern, conscious consumer.</p>
+            </div>
+            <div>
+                <h5 style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; color: var(--gold);">Shop</h5>
+                <ul style="list-style: none; font-size: 13px;">
+                    <li><a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;">Makeup</a></li>
+                    <li><a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;">Skincare</a></li>
+                    <li><a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;">Fragrance</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; color: var(--gold);">Support</h5>
+                <ul style="list-style: none; font-size: 13px;">
+                    <li><a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;">Contact Us</a></li>
+                    <li><a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;">Returns</a></li>
+                    <li><a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(201,169,110,0.2); padding-top: 30px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.5);">
+            <p>&copy; 2025 Luxère. All rights reserved. | <a href="#" style="color: var(--gold); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--gold); text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // PRODUCT DATA
+        const products = [
+            // Lipstick
+            {
+                id: 1,
+                name: 'Velvet Matte Lipstick',
+                category: 'lipstick',
+                brand: 'Luxère Beauty',
+                description: 'Long-wearing velvet matte finish',
+                price: 48,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 2,
+                name: 'Rose Nude Liquid Lip',
+                category: 'lipstick',
+                brand: 'Luxère Beauty',
+                description: 'Lightweight, buildable coverage',
+                price: 42,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 3,
+                name: 'Berry Crush Lipstick',
+                category: 'lipstick',
+                brand: 'Luxère Beauty',
+                description: 'Rich, pigmented formula',
+                price: 48,
+                originalPrice: 60,
+                image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 4,
+                name: 'Coral Silk Lipstick',
+                category: 'lipstick',
+                brand: 'Luxère Beauty',
+                description: 'Silky smooth texture',
+                price: 48,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631730359585-38a4935cbec4?auto=format&w=500&q=85',
+                badge: null
+            },
+
+            // Eyeliner
+            {
+                id: 5,
+                name: 'Precision Liquid Eyeliner',
+                category: 'eyeliner',
+                brand: 'Luxère Beauty',
+                description: 'Fine-tip for perfect lines',
+                price: 38,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631214524020-3c1a6b880b77?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 6,
+                name: 'Charcoal Kohl Eyeliner',
+                category: 'eyeliner',
+                brand: 'Luxère Beauty',
+                description: 'Creamy, smudgeable formula',
+                price: 32,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 7,
+                name: 'Gold Shimmer Eyeliner',
+                category: 'eyeliner',
+                brand: 'Luxère Beauty',
+                description: 'Sparkly, metalllic finish',
+                price: 40,
+                originalPrice: 50,
+                image: 'https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 8,
+                name: 'Burgundy Wine Eyeliner',
+                category: 'eyeliner',
+                brand: 'Luxère Beauty',
+                description: 'Deep, luxurious shade',
+                price: 36,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631214499984-b065f2b1c948?auto=format&w=500&q=85',
+                badge: null
+            },
+
+            // Blush
+            {
+                id: 9,
+                name: 'Peachy Glow Blush',
+                category: 'blush',
+                brand: 'Luxère Beauty',
+                description: 'Seamless, buildable color',
+                price: 44,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1512496015851-a6374173b1fc?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 10,
+                name: 'Rose Mauve Blush',
+                category: 'blush',
+                brand: 'Luxère Beauty',
+                description: 'Flattering natural shade',
+                price: 44,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1512207846876-bb54ef5056fe?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 11,
+                name: 'Sunset Orange Blush',
+                category: 'blush',
+                brand: 'Luxère Beauty',
+                description: 'Warm, dimensional shade',
+                price: 44,
+                originalPrice: 55,
+                image: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 12,
+                name: 'Dusty Rose Blush',
+                category: 'blush',
+                brand: 'Luxère Beauty',
+                description: 'Soft, romantic shade',
+                price: 44,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1571781565036-d3f759be73e4?auto=format&w=500&q=85',
+                badge: null
+            },
+
+            // Foundation
+            {
+                id: 13,
+                name: 'Luminous Fluid Foundation',
+                category: 'foundation',
+                brand: 'Luxère Beauty',
+                description: 'Medium to full coverage',
+                price: 68,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 14,
+                name: 'Velvet Skin Foundation',
+                category: 'foundation',
+                brand: 'Luxère Beauty',
+                description: 'Matte finish, long-lasting',
+                price: 72,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631730486572-226ef5ef0e93?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 15,
+                name: 'Dewy Glow Foundation',
+                category: 'foundation',
+                brand: 'Luxère Beauty',
+                description: 'Radiant, glowy finish',
+                price: 66,
+                originalPrice: 80,
+                image: 'https://images.unsplash.com/photo-1619451334792-150fd785ee74?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 16,
+                name: 'Satin Veil Foundation',
+                category: 'foundation',
+                brand: 'Luxère Beauty',
+                description: 'Natural, breathable formula',
+                price: 70,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&w=500&q=85',
+                badge: null
+            },
+
+            // Mascara
+            {
+                id: 17,
+                name: 'Volume Luxe Mascara',
+                category: 'mascara',
+                brand: 'Luxère Beauty',
+                description: 'Dramatic volume and lift',
+                price: 52,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631214499883-46f62c1a0653?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 18,
+                name: 'Lengthening Lash Mascara',
+                category: 'mascara',
+                brand: 'Luxère Beauty',
+                description: 'Extended lash definition',
+                price: 50,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1583241801152-84d31492aab3?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 19,
+                name: 'Curl & Hold Mascara',
+                category: 'mascara',
+                brand: 'Luxère Beauty',
+                description: 'Keeps curl all day',
+                price: 48,
+                originalPrice: 60,
+                image: 'https://images.unsplash.com/photo-1607602132700-0682588b7244?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 20,
+                name: 'Waterproof Mascara',
+                category: 'mascara',
+                brand: 'Luxère Beauty',
+                description: 'Resistant to water & humidity',
+                price: 54,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&w=500&q=85',
+                badge: null
+            },
+
+            // Compact Powder
+            {
+                id: 21,
+                name: 'Pressed Setting Powder',
+                category: 'compact',
+                brand: 'Luxère Beauty',
+                description: 'Lightweight, long-lasting',
+                price: 42,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631214524049-d93bbd0a42f8?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 22,
+                name: 'Luminous Compact Powder',
+                category: 'compact',
+                brand: 'Luxère Beauty',
+                description: 'Subtle glow, buildable',
+                price: 46,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 23,
+                name: 'Matte Finish Powder',
+                category: 'compact',
+                brand: 'Luxère Beauty',
+                description: 'Oil control, matte finish',
+                price: 40,
+                originalPrice: 50,
+                image: 'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 24,
+                name: 'Translucent Setting Powder',
+                category: 'compact',
+                brand: 'Luxère Beauty',
+                description: 'Works on all skin tones',
+                price: 44,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&w=500&q=85',
+                badge: null
+            },
+
+            // Highlighter
+            {
+                id: 25,
+                name: 'Golden Glow Highlighter',
+                category: 'highlighter',
+                brand: 'Luxère Beauty',
+                description: 'Warm, radiant finish',
+                price: 50,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1612817288560-6dd9445f3c05?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 26,
+                name: 'Pearl Shimmer Highlighter',
+                category: 'highlighter',
+                brand: 'Luxère Beauty',
+                description: 'Cool, icy shimmer',
+                price: 50,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631214524045-12f0a8f8d8c8?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 27,
+                name: 'Rose Gold Highlighter',
+                category: 'highlighter',
+                brand: 'Luxère Beauty',
+                description: 'Flattering, universally loved',
+                price: 50,
+                originalPrice: 62,
+                image: 'https://images.unsplash.com/photo-1612817159068-d4dd2c734a6d?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 28,
+                name: 'Champagne Glow Highlighter',
+                category: 'highlighter',
+                brand: 'Luxère Beauty',
+                description: 'Luxe, prismatic finish',
+                price: 52,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1620916297397-a4a5402a3fb2?auto=format&w=500&q=85',
+                badge: null
+            },
+
+            // Concealer
+            {
+                id: 29,
+                name: 'Full Coverage Concealer',
+                category: 'concealer',
+                brand: 'Luxère Beauty',
+                description: 'Buildable, blendable formula',
+                price: 40,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1631730486782-d12b6c44d8b2?auto=format&w=500&q=85',
+                badge: 'new'
+            },
+            {
+                id: 30,
+                name: 'Creamy Stick Concealer',
+                category: 'concealer',
+                brand: 'Luxère Beauty',
+                description: 'Easy to apply and blend',
+                price: 38,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1596704017254-9d3db9d0e0f3?auto=format&w=500&q=85',
+                badge: null
+            },
+            {
+                id: 31,
+                name: 'Illuminating Concealer',
+                category: 'concealer',
+                brand: 'Luxère Beauty',
+                description: 'Brightens under-eye area',
+                price: 42,
+                originalPrice: 55,
+                image: 'https://images.unsplash.com/photo-1607008829749-c0f284a49752?auto=format&w=500&q=85',
+                badge: 'sale'
+            },
+            {
+                id: 32,
+                name: 'Hydrating Concealer',
+                category: 'concealer',
+                brand: 'Luxère Beauty',
+                description: 'Moisturizing, crease-proof',
+                price: 44,
+                originalPrice: null,
+                image: 'https://images.unsplash.com/photo-1619451427882-6aaaded0cc61?auto=format&w=500&q=85',
+                badge: null
+            }
+        ];
+
+        // STATE
+        let currentCategory = 'all';
+        let currentSort = '';
+        let currentPriceFilter = '';
+        let searchTerm = '';
+
+        // DOM ELEMENTS
+        const productsGrid = document.getElementById('productsGrid');
+        const emptyState = document.getElementById('emptyState');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const searchInput = document.getElementById('searchInput');
+        const priceFilter = document.getElementById('priceFilter');
+        const sortFilter = document.getElementById('sortFilter');
+
+        // FUNCTIONS
+        function filterProducts() {
+            let filtered = [...products];
+
+            // Category filter
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+
+            // Search filter
+            if (searchTerm) {
+                filtered = filtered.filter(p =>
+                    p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    p.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+
+            // Price filter
+            if (currentPriceFilter) {
+                filtered = filtered.filter(p => {
+                    if (currentPriceFilter === '0-50') return p.price < 50;
+                    if (currentPriceFilter === '50-100') return p.price >= 50 && p.price < 100;
+                    if (currentPriceFilter === '100-150') return p.price >= 100 && p.price < 150;
+                    if (currentPriceFilter === '150+') return p.price >= 150;
+                    return true;
+                });
+            }
+
+            // Sort
+            if (currentSort === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (currentSort === 'newest') {
+                filtered.sort((a, b) => b.id - a.id);
+            } else if (currentSort === 'popularity') {
+                // Already in popularity order (as defined in data)
+            }
+
+            return filtered;
+        }
+
+        function renderProducts() {
+            const filtered = filterProducts();
+
+            if (filtered.length === 0) {
+                productsGrid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            productsGrid.innerHTML = filtered.map(product => `
+                <div class="makeup-product-card" data-id="${product.id}">
+                    <div class="makeup-card-img">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        ${product.badge ? `<span class="makeup-card-badge makeup-badge-${product.badge}">${product.badge === 'new' ? 'New' : 'Sale'}</span>` : ''}
+                        <div class="makeup-card-actions">
+                            <button class="makeup-card-action-btn">Add to Wishlist</button>
+                            <button class="makeup-card-action-btn" onclick="addToCart(event, ${product.id})">Add to Bag</button>
+                        </div>
+                    </div>
+                    <div class="makeup-card-info">
+                        <p class="makeup-card-brand">${product.brand}</p>
+                        <h3 class="makeup-card-name">${product.name}</h3>
+                        <p class="makeup-card-description">${product.description}</p>
+                        <div class="makeup-card-price-row">
+                            <span class="makeup-card-price">$${product.price}</span>
+                            ${product.originalPrice ? `
+                                <span class="makeup-card-price-old">$${product.originalPrice}</span>
+                                <span class="makeup-card-discount">Save ${Math.round((product.originalPrice - product.price) / product.originalPrice * 100)}%</span>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // EVENT LISTENERS
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                renderProducts();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            searchTerm = e.target.value.trim();
+            renderProducts();
+        });
+
+        priceFilter.addEventListener('change', (e) => {
+            currentPriceFilter = e.target.value;
+            renderProducts();
+        });
+
+        sortFilter.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderProducts();
+        });
+
+        // CART FUNCTION
+        function addToCart(event, productId) {
+            event.preventDefault();
+            event.stopPropagation();
+            const product = products.find(p => p.id === productId);
+            alert(`${product.name} added to bag!`);
+        }
+
+        // INITIAL RENDER
+        renderProducts();
+    </script>
+</body>
+</html>
