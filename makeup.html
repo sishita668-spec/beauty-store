@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css"/>
     <style>
-        /* MAKEUP PAGE SPECIFIC STYLES */
         
-        /* HERO SECTION */
+        
+        
         .makeup-hero {
             background: linear-gradient(135deg, #4A2820 0%, #6B3828 50%, #8B4A40 100%);
             padding: 100px 5%;
@@ -267,6 +267,12 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+        }
+
+        .makeup-card-img img.product-fit-contain {
+            object-fit: contain;
+            padding: 16px;
+            background: var(--white);
         }
 
         .makeup-product-card:hover .makeup-card-img img {
@@ -675,7 +681,8 @@
                 description: 'Long-wearing velvet matte finish',
                 price: 48,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?auto=format&w=500&q=85',
+                image: 'photos/velvet-matte-lipstick.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -697,7 +704,8 @@
                 description: 'Rich, pigmented formula',
                 price: 48,
                 originalPrice: 60,
-                image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&w=500&q=85',
+                image: 'photos/berrycrush.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -708,7 +716,8 @@
                 description: 'Silky smooth texture',
                 price: 48,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631730359585-38a4935cbec4?auto=format&w=500&q=85',
+                image: 'photos/coral silk.jpg',
+                imageFit: 'contain',
                 badge: null
             },
 
@@ -721,7 +730,8 @@
                 description: 'Fine-tip for perfect lines',
                 price: 38,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631214524020-3c1a6b880b77?auto=format&w=500&q=85',
+                image: 'photos/precision liquid eyeliner.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -732,7 +742,8 @@
                 description: 'Creamy, smudgeable formula',
                 price: 32,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&w=500&q=85',
+                image: 'photos/charcoal kohl eyeliner.jpg',
+                imageFit: 'contain',
                 badge: null
             },
             {
@@ -743,7 +754,8 @@
                 description: 'Sparkly, metalllic finish',
                 price: 40,
                 originalPrice: 50,
-                image: 'https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&w=500&q=85',
+                image: 'photos/gold shimmer eyeliner.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -754,7 +766,8 @@
                 description: 'Deep, luxurious shade',
                 price: 36,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631214499984-b065f2b1c948?auto=format&w=500&q=85',
+                image: 'photos/burgurndy wine.jpg',
+                imageFit: 'contain',
                 badge: null
             },
 
@@ -767,7 +780,8 @@
                 description: 'Seamless, buildable color',
                 price: 44,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1512496015851-a6374173b1fc?auto=format&w=500&q=85',
+                image: 'photos/peach glow blush.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -778,7 +792,8 @@
                 description: 'Flattering natural shade',
                 price: 44,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1512207846876-bb54ef5056fe?auto=format&w=500&q=85',
+                image: 'photos/rose mauve.jpg',
+                imageFit: 'contain',
                 badge: null
             },
             {
@@ -789,7 +804,8 @@
                 description: 'Warm, dimensional shade',
                 price: 44,
                 originalPrice: 55,
-                image: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&w=500&q=85',
+                image: 'photos/sunset orange.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -800,7 +816,8 @@
                 description: 'Soft, romantic shade',
                 price: 44,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1571781565036-d3f759be73e4?auto=format&w=500&q=85',
+                image: 'photos/dusty rose.jpg',
+                imageFit: 'contain',
                 badge: null
             },
 
@@ -813,7 +830,8 @@
                 description: 'Medium to full coverage',
                 price: 68,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&w=500&q=85',
+                image: 'photos/luminous liquid foundatio.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -824,7 +842,8 @@
                 description: 'Matte finish, long-lasting',
                 price: 72,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631730486572-226ef5ef0e93?auto=format&w=500&q=85',
+                image: 'photos/velvet skin.jpg',
+                imageFit: 'contain',
                 badge: null
             },
             {
@@ -835,7 +854,8 @@
                 description: 'Radiant, glowy finish',
                 price: 66,
                 originalPrice: 80,
-                image: 'https://images.unsplash.com/photo-1619451334792-150fd785ee74?auto=format&w=500&q=85',
+                image: 'photos/dewy glow.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -846,7 +866,8 @@
                 description: 'Natural, breathable formula',
                 price: 70,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&w=500&q=85',
+                image: 'photos/satin veil.jpg',
+                imageFit: 'contain',
                 badge: null
             },
 
@@ -859,7 +880,8 @@
                 description: 'Dramatic volume and lift',
                 price: 52,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631214499883-46f62c1a0653?auto=format&w=500&q=85',
+                image: 'photos/volume luxe mascara.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -870,7 +892,8 @@
                 description: 'Extended lash definition',
                 price: 50,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1583241801152-84d31492aab3?auto=format&w=500&q=85',
+                image: 'photos/lenghtning lash mascara.jpg',
+                imageFit: 'contain',
                 badge: null
             },
             {
@@ -881,7 +904,8 @@
                 description: 'Keeps curl all day',
                 price: 48,
                 originalPrice: 60,
-                image: 'https://images.unsplash.com/photo-1607602132700-0682588b7244?auto=format&w=500&q=85',
+                image: 'photos/curl and hold mascara.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -892,7 +916,8 @@
                 description: 'Resistant to water & humidity',
                 price: 54,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&w=500&q=85',
+                image: 'photos/waterproof mascara.jpg',
+                imageFit: 'contain',
                 badge: null
             },
 
@@ -905,7 +930,8 @@
                 description: 'Lightweight, long-lasting',
                 price: 42,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631214524049-d93bbd0a42f8?auto=format&w=500&q=85',
+                image: 'photos/presses setting powder.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -927,7 +953,8 @@
                 description: 'Oil control, matte finish',
                 price: 40,
                 originalPrice: 50,
-                image: 'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?auto=format&w=500&q=85',
+                image: 'photos/matte finish powder.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -938,7 +965,8 @@
                 description: 'Works on all skin tones',
                 price: 44,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&w=500&q=85',
+                image: 'photos/translucent setting powder.jpg',
+                imageFit: 'contain',
                 badge: null
             },
 
@@ -951,7 +979,8 @@
                 description: 'Warm, radiant finish',
                 price: 50,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1612817288560-6dd9445f3c05?auto=format&w=500&q=85',
+                image: 'photos/golden glow highlighter.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -962,7 +991,8 @@
                 description: 'Cool, icy shimmer',
                 price: 50,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631214524045-12f0a8f8d8c8?auto=format&w=500&q=85',
+                image: 'photos/pearl shimmer highlighter.jpg',
+                imageFit: 'contain',
                 badge: null
             },
             {
@@ -973,7 +1003,8 @@
                 description: 'Flattering, universally loved',
                 price: 50,
                 originalPrice: 62,
-                image: 'https://images.unsplash.com/photo-1612817159068-d4dd2c734a6d?auto=format&w=500&q=85',
+                image: 'photos/rose gold highlighter.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -984,7 +1015,8 @@
                 description: 'Luxe, prismatic finish',
                 price: 52,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1620916297397-a4a5402a3fb2?auto=format&w=500&q=85',
+                image: 'photos/champagne glow highlighter.jpg',
+                imageFit: 'contain',
                 badge: null
             },
 
@@ -997,7 +1029,8 @@
                 description: 'Buildable, blendable formula',
                 price: 40,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1631730486782-d12b6c44d8b2?auto=format&w=500&q=85',
+                image: 'photos/full coverage concealer.jpg',
+                imageFit: 'contain',
                 badge: 'new'
             },
             {
@@ -1008,7 +1041,8 @@
                 description: 'Easy to apply and blend',
                 price: 38,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1596704017254-9d3db9d0e0f3?auto=format&w=500&q=85',
+                image: 'photos/creamy stick concealer.jpg',
+                imageFit: 'contain',
                 badge: null
             },
             {
@@ -1019,7 +1053,8 @@
                 description: 'Brightens under-eye area',
                 price: 42,
                 originalPrice: 55,
-                image: 'https://images.unsplash.com/photo-1607008829749-c0f284a49752?auto=format&w=500&q=85',
+                image: 'photos/illuminating concealer.jpg',
+                imageFit: 'contain',
                 badge: 'sale'
             },
             {
@@ -1030,7 +1065,8 @@
                 description: 'Moisturizing, crease-proof',
                 price: 44,
                 originalPrice: null,
-                image: 'https://images.unsplash.com/photo-1619451427882-6aaaded0cc61?auto=format&w=500&q=85',
+                image: 'photos/hydrating concealer.jpg',
+                imageFit: 'contain',
                 badge: null
             }
         ];
@@ -1104,7 +1140,7 @@
             productsGrid.innerHTML = filtered.map(product => `
                 <div class="makeup-product-card" data-id="${product.id}">
                     <div class="makeup-card-img">
-                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <img class="${product.imageFit === 'contain' ? 'product-fit-contain' : ''}" src="${product.image}" alt="${product.name}" loading="lazy">
                         ${product.badge ? `<span class="makeup-card-badge makeup-badge-${product.badge}">${product.badge === 'new' ? 'New' : 'Sale'}</span>` : ''}
                         <div class="makeup-card-actions">
                             <button class="makeup-card-action-btn">Add to Wishlist</button>
